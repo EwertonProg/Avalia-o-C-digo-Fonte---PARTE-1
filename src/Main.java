@@ -8,40 +8,33 @@ public class Main {
             "FileUploadOperation.txt",
             "UserConfig.txt",
             "Utilities.txt"};
-
+    private static final String SEPARADOR = ",";
+    
     public static void main(String[] args) throws Exception {
         FileWriter csvWriter = new FileWriter("new.csv");
         csvWriter.append("MES");
-
-        for (String fileName : FILES_NAMES) {
-            csvWriter.append(";").append(fileName).append(";").append(";");
-        }
-
-        csvWriter.append("\n");
-
-        for (String fileName : FILES_NAMES) {
-            csvWriter.append(";");
-            csvWriter.append("LOC");
-            csvWriter.append(";");
-            csvWriter.append("CLASSES");
-            csvWriter.append(";");
-            csvWriter.append("METODOS");
-        }
+        csvWriter.append(SEPARADOR);
+        csvWriter.append("LOC");
+        csvWriter.append(SEPARADOR);
+        csvWriter.append("CLASSES");
+        csvWriter.append(SEPARADOR);
+        csvWriter.append("METODOS");
 
         for (Integer i = 1; i <= 27; i++) {
+            RetornoDTO retorno = new RetornoDTO(0,0,0);
+            File file;
+            for (String fileName : FILES_NAMES) {
+                file = new File(i.toString() + "/" + fileName);
+                retorno.somarComOutro(Util.analizarArquivo(file));
+            }
             csvWriter.append("\n");
             csvWriter.append(i.toString());
-            for (String fileName : FILES_NAMES) {
-                File file = new File(i.toString() + "/" + fileName);
-                System.out.println("\n" + i.toString() + "/" + fileName);
-                RetornoDTO retorno = Util.analizarArquivo(file);
-                csvWriter.append(";");
-                csvWriter.append(retorno.getLoc().toString());
-                csvWriter.append(";");
-                csvWriter.append(retorno.getClasses().toString());
-                csvWriter.append(";");
-                csvWriter.append(retorno.getMetodos().toString());
-            }
+            csvWriter.append(SEPARADOR);
+            csvWriter.append(retorno.getLoc().toString());
+            csvWriter.append(SEPARADOR);
+            csvWriter.append(retorno.getClasses().toString());
+            csvWriter.append(SEPARADOR);
+            csvWriter.append(retorno.getMetodos().toString());
         }
         csvWriter.flush();
         csvWriter.close();

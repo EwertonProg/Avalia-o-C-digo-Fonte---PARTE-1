@@ -20,4 +20,10 @@ public class RetornoDTO {
     public Integer getMetodos() {
         return metodos;
     }
+
+    public void somarComOutro(RetornoDTO outro){
+        this.loc += outro.loc;
+        this.classes += outro.classes;
+        this.metodos += outro.metodos;
+    }
 }

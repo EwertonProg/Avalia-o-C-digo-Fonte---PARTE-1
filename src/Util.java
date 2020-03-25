@@ -28,9 +28,6 @@ class Util {
         String analyzableCode = documentFullText.toString().replaceAll("\".*\"", "");
         int numberOfClasses = count(analyzableCode, CLASS_COUNTER);
         int numberOfMethods = count(analyzableCode.replaceAll("[a-zA-Z]\\s[a-zA-Z].*\\(.*\\).*\\{","Ç"),"Ç");
-        System.out.println("LOC: "+lines);
-        System.out.println("Numero de metodos: "+ numberOfMethods);
-        System.out.println("Numero de classes: "+numberOfClasses);
         return new RetornoDTO(lines,numberOfClasses,numberOfMethods);
     }
 
