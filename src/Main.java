@@ -9,7 +9,7 @@ public class Main {
             "UserConfig.txt",
             "Utilities.txt"};
     private static final String SEPARADOR = ",";
-    
+
     public static void main(String[] args) throws Exception {
         FileWriter csvWriter = new FileWriter("new.csv");
         csvWriter.append("MES");
@@ -19,13 +19,17 @@ public class Main {
         csvWriter.append("CLASSES");
         csvWriter.append(SEPARADOR);
         csvWriter.append("METODOS");
+        csvWriter.append(SEPARADOR);
+        csvWriter.append("CLASSES_DEUS");
+        csvWriter.append(SEPARADOR);
+        csvWriter.append("METODOS_DEUS");
 
         for (Integer i = 1; i <= 27; i++) {
-            RetornoDTO retorno = new RetornoDTO(0,0,0);
+            RetornoDTO retorno = new RetornoDTO(0,0,0, 0, 0);
             File file;
             for (String fileName : FILES_NAMES) {
                 file = new File(i.toString() + "/" + fileName);
-                retorno.somarComOutro(Util.analizarArquivo(file));
+                retorno.sumWithAnother(FileAnalizer.analyzeFile(file));
             }
             csvWriter.append("\n");
             csvWriter.append(i.toString());
@@ -34,7 +38,11 @@ public class Main {
             csvWriter.append(SEPARADOR);
             csvWriter.append(retorno.getClasses().toString());
             csvWriter.append(SEPARADOR);
-            csvWriter.append(retorno.getMetodos().toString());
+            csvWriter.append(retorno.getMethods().toString());
+            csvWriter.append(SEPARADOR);
+            csvWriter.append(retorno.getNumberOfGodClasses().toString());
+            csvWriter.append(SEPARADOR);
+            csvWriter.append(retorno.getNumberOfGodMethods().toString());
         }
         csvWriter.flush();
         csvWriter.close();
