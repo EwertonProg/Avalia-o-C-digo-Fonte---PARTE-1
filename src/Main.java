@@ -54,15 +54,15 @@ public class Main {
         csvWriter.append("\n");
         csvWriter.append(MES_28.toString());
         csvWriter.append(SEPARADOR);
-        csvWriter.append(new RegrecaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getLoc).collect(Collectors.toList())).prever(MES_28).toString());
+        csvWriter.append(new RegressaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getLoc).collect(Collectors.toList())).prever(MES_28).toString());
         csvWriter.append(SEPARADOR);
-        csvWriter.append(new RegrecaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getClasses).collect(Collectors.toList())).prever(MES_28).toString());
+        csvWriter.append(new RegressaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getClasses).collect(Collectors.toList())).prever(MES_28).toString());
         csvWriter.append(SEPARADOR);
-        csvWriter.append(new RegrecaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getMethods).collect(Collectors.toList())).prever(MES_28).toString());
+        csvWriter.append(new RegressaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getMethods).collect(Collectors.toList())).prever(MES_28).toString());
         csvWriter.append(SEPARADOR);
-        csvWriter.append(new RegrecaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getNumberOfGodClasses).collect(Collectors.toList())).prever(MES_28).toString());
+        csvWriter.append(new RegressaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getNumberOfGodClasses).collect(Collectors.toList())).prever(MES_28).toString());
         csvWriter.append(SEPARADOR);
-        csvWriter.append(new RegrecaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getNumberOfGodMethods).collect(Collectors.toList())).prever(MES_28).toString());
+        csvWriter.append(new RegressaoLinear(meses,retornoDTOList.stream().map(RetornoDTO::getNumberOfGodMethods).collect(Collectors.toList())).prever(MES_28).toString());
         csvWriter.flush();
         csvWriter.close();
     }

@@ -1,13 +1,13 @@
 import java.util.List;
 
-public class RegrecaoLinear {
+public class RegressaoLinear {
     private List<Integer> variaveisIndepen;
     private List<Integer> variaveisDepen;
     private Double coeficienteDependente;
     private Double coeficienteIndependente;
     private int listSize;
 
-    public RegrecaoLinear(List<Integer> variaveisIndepen, List<Integer> variaveisDepen) {
+    public RegressaoLinear(List<Integer> variaveisIndepen, List<Integer> variaveisDepen) {
         if (variaveisDepen.size() != variaveisIndepen.size()) {
             throw new IllegalArgumentException("As duas listas devem, obrigatoramente, ter o mesmo tamanho");
         }
